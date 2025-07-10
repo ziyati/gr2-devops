@@ -46,7 +46,7 @@
             <!-- SonarQube server URL -->
             <sonar.host.url>http://localhost:9000</sonar.host.url>
             <!-- Token-based authentication (recommended) -->
-            <sonar.token>sqa_85dfd9662b6e5c947b256d4b200ecbac1617b861</sonar.token>
+            <sonar.token>sqa_f2713308c6b99808f1a5744209a7cf88f4e31bf2</sonar.token>
          </properties>
       </profile>
    </profiles>
