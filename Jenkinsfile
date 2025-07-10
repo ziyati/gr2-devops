@@ -3,7 +3,10 @@ pipeline {
   tools {
     maven 'maven'
   }
-
+ environment {
+    SONAR_URL = "http://localhost:9000"
+  }
+  
   stages {
     stage('Checkout') {
       steps {
@@ -40,5 +43,19 @@ pipeline {
         sh 'docker push 127.0.0.1:8082/myrep/java_code:01'
       }
     }
+    
+    stage("Prepare") {
+      steps {
+        sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install'
+      }
+    }
+    stage("SonarQube Analysis") {
+      steps {
+        sh 'mvn sonar:sonar -Dsonar.host.url=$SONAR_URL'
+      }
+    }
+    
+    
+    
   }
 }
