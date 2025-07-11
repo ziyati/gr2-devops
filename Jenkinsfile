@@ -54,7 +54,11 @@ pipeline {
         sh 'mvn sonar:sonar -Dsonar.host.url=$SONAR_URL'
       }
     }
-    
+    stage("Kubernetes") {
+      steps {
+        sh 'kubectl create -f deployment.yml'
+      }
+    }
     
     
   }
